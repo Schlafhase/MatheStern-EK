@@ -2,6 +2,13 @@
 \usepackage{amsmath, amsfonts, amssymb, amsthm, array, enumitem}
 \usepackage[parfill]{parskip}
 \usepackage[german]{babel}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true, %set true if you want colored links
+	linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=black,  %choose some color if you want links to stand out
+}
 
 \newcommand\func[5]{%
 	\begingroup
@@ -36,12 +43,13 @@
 
 \title{Mathe-Ergänzungskurs}
 \author{Linus Yury Schneeberg}
-\date{2025/26}
+\date{2025-2027}
 \begin{document}
 	\maketitle
 	\tableofcontents
 	\newpage
 	
+	\part{Q1}
 	\section{Reelle Zahlenfolgen}
 	\subsection{Definitionen}
 	\begin{defn}
