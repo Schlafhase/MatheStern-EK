@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, array, enumitem}
+\usepackage[parfill]{parskip}
+\usepackage[german]{babel}
+
+\newcommand\func[5]{%
+	\begingroup
+	\setlength\arraycolsep{0pt}
+	#1\colon\begin{array}[t]{l >{{}}c<{{}} l}
+		#2 & \to & #3 \\ #4 & \mapsto & #5 
+	\end{array}%
+	\endgroup}
+	
+\newtheorem{thm}{Satz}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Schlussfolgerung}
+\newtheorem{rem}[thm]{Bemerkung}
+\newtheorem{remark}[thm]{Bemerkung}
+\newtheorem{conj}[thm]{Annahme}
+\newtheorem{defn}{Definition}[section]
+\renewcommand\qedsymbol{QED}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\newenvironment{aleq}{
+\begin{equation}
+\begin{aligned}
+}{
+\end{aligned}
+\end{equation}
+}
+
+\newenvironment{aleq*}{\begin{equation*}\begin{aligned}}{\end{aligned}\end{equation*}}
+
+\title{Mathe-Ergänzungskurs}
+\author{Linus Yury Schneeberg}
+\date{2025/26}
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	
+	\section{Reelle Zahlenfolgen}
+	\subsection{Definitionen}
+	\begin{defn}
+	$\func{a}{\mathbb{N}}{\mathbb{R}}{n}{a(n)=a_n}$ heißt reelle Zahlenfolge.
+	\end{defn}
+	\begin{defn}
+	Als Bildungsvorschrift bezeichnet man 
+	\begin{enumerate}[label=(\alph*)]
+		\item \(a(n) = f(n)\) \ z.B. \(a(n) = n^2\) \ (explizit)
+		\item \(a(n) = f(a_1, \dots, a_{n-1}, n)\) \ z.B. \(a(n+1) = a(n) + a(n-1)\) \ (rekursiv)
+	\end{enumerate}
+\end{defn}
+	
+	\subsection{Beweis (rekursive Summenfolge = explizite)}
+	\begin{thm}
+	Seien \(a_1(n)\) und \(a_2(n)\) Folgen mit den Bildungsforschriften
+	\begin{aleq*}
+			a_1(n) &= a_1(n) + (n + 1) & a_2(n) = \sum_{k=0}^{n} k \\
+			a_1(0) &= 0 \text{.}
+	\end{aleq*}
+	\par
+	Dann gilt \(\forall n \colon a_1(n) = a_2(n)\).
+	\end{thm}
+	
+	\begin{proof} Der Beweis wird durch vollständige Induktion geführt. \\
+	\textbf{Induktionsanfang:} Für \(n=0\)
+	\begin{aleq}
+			a_1(0) &= 0 
+	\end{aleq}
+	\begin{aleq}
+			a_2(0) &= \sum_{k=0}^{0} k = 0
+	\end{aleq}
+	\begin{aleq*}
+		(1) \land (2) \implies a_1(0) = a_2(0)
+	\end{aleq*}
+	
+	
+	\textbf{Induktionsschritt:} Induktionshypothese: \(\exists n \colon a_1(n) = a_2(n)\) \\
+	Zu zeigen ist, \(\text{Ind. Hypot.} \implies a_1(n+1) = a_2(n+1)\)
+	
+	\begin{equation*}
+		\begin{aligned}
+			a_1(n+1) &= a_1(n) + (n+1) \\
+			&= a_2(n) + (n+1) && \text{Ind. Hypot.} \\
+			&= \sum_{k=0}^{n}k + (n+1) \\
+			&= \sum_{k=0}^{n+1}k \\
+			&= a_2(n+1)
+		\end{aligned}
+	\end{equation*}
+	\end{proof}
+	
+	\subsection{Satz (Jede konvergente Folge ist beschränkt)}
+	\begin{thm}
+		Sei \((a_n)_{n=1}^{\infty}\) eine konvergente Folge mit dem Grenzwert \(a\). Dann gilt
+		\[
+		\exists m,M \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon m < a_n < M
+		\]
+		
+		\begin{proof}
+			Da \(a_n\) gegen \(a\) konvergiert gilt
+		\[
+		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon |a_n - a| < \varepsilon \text{.}
+		\]
+		Da \(|a_n - a| < \varepsilon\) in der oberen Aussage äquivalent zu \(-x < a_n < x\) ist, gilt auch
+		\[
+		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon -\varepsilon < a_n - a < \varepsilon \text{.}
+		\]
+		\par
+		Für ein bestimmtes \(\varepsilon > 0\) existiert also ein \(N_{\varepsilon}\), so dass 
+		für alle \(n \geq N_{\varepsilon}\) \(a_n\) beschränkt ist. Da es nur endlich viele Folgenglieder für \(n < N_{\varepsilon}\) gibt, lässt sich eine obere Grenze als \(max (\left\lbrace a_n | n < N_{\varepsilon} \right\rbrace  \cup \lbrace \varepsilon + a \rbrace)\) und eine untere Grenze als \(min (\left\lbrace a_n | n < N_{\varepsilon} \rbrace \cup \lbrace -\varepsilon + a \rbrace\right\rbrace)\) berechnen.
+		\end{proof}
+	\end{thm}
+	
+	\subsection{Satz von Bolzano-Weierstraß}
+	\begin{thm}[Satz von Bolzano-Weierstraß \rom{1}]
+		Jede beschränkte Folge hat eine konvergente Teilfolge.
+		
+		\begin{proof} \((a_n)_{n=1}^{\infty}\) sei beschränkt durch \(m \leq a_n \leq M\) für alle \(n \in \mathbb{N}\). Man teile das intervall \([n,M]\) in zwei Teile bei \(\frac{m+M}{2}\).
+			\begin{enumerate}[label=\theenumi . Fall:]
+				\item Auf \(\frac{m+M}{2}\) liegen unendlich viele Folgeglieder.
+				\item In \([m, \frac{m+M}{2}[\) liegen unendlich viele Folgeglieder. Dann beginne mit \([m, \frac{m+M}{2}[\) von vorne.
+				\item In \(]\frac{m+M}{2}, M]\) liegen undenlich viele Folgeglieder. Dann beginne mit \(]\frac{m+M}{2}, M]\) von vorne.
+			\end{enumerate}
+			
+		\end{proof}
+	\end{thm}
+	
+\end{document}
