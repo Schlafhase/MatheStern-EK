@@ -106,7 +106,7 @@
 	\begin{thm}
 		Sei \((a_n)_{n=1}^{\infty}\) eine konvergente Folge mit dem Grenzwert \(a\). Dann gilt
 		\[
-		\exists m,M \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon m < a_n < M
+		\exists m,M \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon m < a_n < M \text{.}
 		\]
 		
 		\begin{proof}
@@ -128,7 +128,7 @@
 	\begin{thm}[Satz von Bolzano-Weierstraß \rom{1}]
 		Jede beschränkte Folge hat eine konvergente Teilfolge.
 		
-		\begin{proof} \((a_n)_{n=1}^{\infty}\) sei beschränkt durch \(m \leq a_n \leq M\) für alle \(n \in \mathbb{N}\). Man teile das intervall \([n,M]\) in zwei Teile bei \(\frac{m+M}{2}\).
+		\begin{proof} \((a_n)_{n=1}^{\infty}\) sei beschränkt durch \(m \leq a_n \leq M\) für alle \(n \in \mathbb{N}\). Man teile das Intervall \([n,M]\) in zwei Teile bei \(\frac{m+M}{2}\).
 			\begin{enumerate}[label=\theenumi . Fall:]
 				\item Auf \(\frac{m+M}{2}\) liegen unendlich viele Folgeglieder.
 				\item In \([m, \frac{m+M}{2}[\) liegen unendlich viele Folgeglieder. \\Dann beginne mit \([m, \frac{m+M}{2}[\) von vorne.
@@ -166,40 +166,76 @@
 				\exists \sigma \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon a_n \leq \sigma
 			\end{aleq*}
 			\par
-			\textbf{Die kleinste obere Schranke (Supremum) von \((a_n)\) ist \(sup\) genau dann, wenn: }
+			Wenn \(sup\) das Supremum von \((a_n)\) ist, dann gilt
 			\begin{aleq*}
-				\exists sup \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon a_n \leq sup \land \forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon sup - \varepsilon < a_{N_\varepsilon}
+				\forall n \in \mathbb{N} \colon a_n \leq sup \land \forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon sup - \varepsilon < a_{N_\varepsilon} \text{.}
 			\end{aleq*}
 			\par
-			Zu zeigen ist \(\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon |a_n - sup| < \varepsilon\) (1).
+			Wir zeigen nun, dass \((a_n)\) gegen \(sup\) konvergiert, mit anderen Worten:
+			\begin{aleq}
+				\label{konvergenz}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon |a_n - sup| < \varepsilon \text{.}
+			\end{aleq}
+			\par
+			Es gilt
 			\begin{aleq*}
 				&|a_n - sup| < \varepsilon \\
 				\iff &sup - a_n < \varepsilon && \text{weil } sup > a_n \\
 				\iff &sup - \varepsilon < a_n
 			\end{aleq*}
 			\par
-			(1) ist also wahr genau dann, wenn
+			Aussage (\ref{konvergenz}) ist also wahr genau dann, wenn
 			\begin{aleq*}
-				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon sup - \varepsilon < a_n
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon sup - \varepsilon < a_n \text{.}
 			\end{aleq*}
 			\par
-			Laut Definition des Supremums gilt \(\forall \varepsilon > 0 \colon \exists  \colon N_\varepsilon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_n \geq a_{N_\varepsilon}\). Daraus folgt, dass (1) wahr ist und \((a_n)\) gegen \(sup\) konvergiert.
+			Laut Definition des Supremums gilt \(\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_{N_\varepsilon} \leq a_n\). Daraus folgt, dass (\ref{konvergenz}) wahr ist und \((a_n)\) gegen \(sup\) konvergiert.
 		\end{proof}
 	\end{thm}
 	\subsection{Cauchy-Folgen}
 	\begin{defn}
 		Eine Folge \((a_n)_{n=1}^\infty\) heißt Cauchy-Folge (altmodisch auch Fundamentalfolge), wenn gilt:
 		\begin{aleq*}
-			\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{B} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
+			\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
 		\end{aleq*}
 	\end{defn}
+	
+	\begin{lem}
+		\label{betragSumme}
+		\begin{aleq*}
+			\forall x,y \in \mathbb{R} \colon |x+y| \leq |x| + |y|
+		\end{aleq*}
+		\begin{proof}
+			Seien \(x,y \in \mathbb{R}\) und beliebig, aber fest.
+			Da ein beliebiges \(a \in \mathbb{R}\) entweder positiv (\(a = |a|\)) oder negativ (\(a = -|a|\)) ist (und \(-a\) auch) gilt:
+			\begin{aleq}
+				a \leq |a| \land -a \leq |a|
+			\end{aleq}
+			\par
+			Für \(x+y\) müssen zwei Fälle überprüft werden:
+			\begin{enumerate}[label=\theenumi . Fall: ]
+				\item \(x+y \geq 0\) \\
+				\begin{aleq*}
+					|x+y| = x+y \\
+					(1) \implies x+y \leq |x| + |y|
+				\end{aleq*}
+				
+				\item \(x_y < 0\) \\
+				\begin{aleq*}
+					|x+y| = -x-y \\
+					(1) \implies -x-y \leq |x| + |y|
+				\end{aleq*}
+			\end{enumerate}
+		\end{proof}
+	\end{lem}
+	
 	\begin{thm}
 		In den reellen Zahlen (in jeder topologisch abgeschlossenen Menge mit Abstandsbegriff) sind Konvergenz und Cauchy-Eigenschaft äquivalent.
 		
 		\begin{proof}
 			(\(\implies\)) Sei \((a_n)_{n=1}^\infty\) konvergent gegen \(a\). Zu zeigen ist, dass \((a_n)\) eine Cauchy-Folge ist:
 			\begin{aleq*}
-				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{B} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
 			\end{aleq*}
 			\par
 			Wir wissen, dass \((a_n)\) gegen \(a\) konvergiert. Es gilt also
@@ -211,38 +247,11 @@
 			\begin{aleq*}
 				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_n - a| + | a_m - a| < \varepsilon \text{.}
 			\end{aleq*}
-			\begin{lem}
-				\begin{aleq*}
-					\forall x,y \in \mathbb{R} \colon |x+y| \leq |x| + |y|
-				\end{aleq*}
-				\begin{proof}
-					Seien \(x,y \in \mathbb{R}\) und beliebig, aber fest.
-					Da ein beliebiges \(a \in \mathbb{R}\) entweder positiv (\(a = |a|\)) oder negativ (\(a = -|a|\)) ist (und \(-a\) auch) gilt:
-					\begin{aleq}
-						a \leq |a| \land -a \leq |a|
-					\end{aleq}
-					\par
-					Für \(x+y\) müssen zwei Fälle überprüft werden:
-					\begin{enumerate}[label=\theenumi . Fall: ]
-						\item \(x+y \geq 0\) \\
-						\begin{aleq*}
-							|x+y| = x+y \\
-							(1) \implies x+y \leq |x| + |y|
-						\end{aleq*}
-						
-						\item \(x_y < 0\) \\
-						\begin{aleq*}
-							|x+y| = -x-y \\
-							(1) \implies -x-y \leq |x| + |y|
-						\end{aleq*}
-					\end{enumerate}
-				\end{proof}
-			\end{lem}
 			
 			\par
-			Laut Lemma 1.6 gilt also auch
+			Laut Lemma \ref{betragSumme} gilt also auch
 			\begin{aleq*}
-				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a + a - a_n| \leq |a_n - a| + | a_m - a| < \varepsilon
+				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a + a - a_n| \leq |a_n - a| + | a_m - a| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
 			Das impliziert
@@ -250,13 +259,77 @@
 				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
-			Das ist äquivalent zur Definition der Cauchy-Folge, weil man ein \(K_\varepsilon\) bestimmen kann, welches größer oder gleich dem \(N_\varepsilon\) und \(M_\varepsilon\) ist. Dann gilt
+			Das ist äquivalent zur Definition der Cauchy-Folge, weil man ein \(K_\varepsilon\) bestimmen kann, welches größer oder gleich \(N_\varepsilon\) und \(M_\varepsilon\) ist. Man wähle also \(K_\varepsilon := \max \left\lbrace N_\varepsilon, M_\varepsilon\right\rbrace\). Dann gilt
 			\begin{aleq*}
 				\forall \varepsilon > 0 \colon \forall n, m > K_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
 			Damit ist \((a_n)\) eine Cauchy-Folge.
 		\end{proof}
+	\end{thm}
+	
+	\vdots
+	
+	\section{Grenzwerte}
+	\vdots
+	\subsection{Einschachtelungssatz/Sandwichlemma}
+	\begin{thm}[Einschachtelungssatz/Sandwichlemma]
+		Seien \((a_n)_{n=1}^\infty\), \((b_n)_{n=1}^\infty\) und \((c_n)_{n=1}^\infty\) beliebige Folgen mit \(\forall n \in \mathbb{N} \colon a_n \leq b_n \leq c_n\) und \(\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} b_n = g\). Dann konvergiert auch \((b_n)\) gegen \(g\).
+		
+		\begin{proof}
+			Zu zeigen ist
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall n > N_\varepsilon \colon |b_n - g| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Gegeben ist
+			\begin{aleq*}
+				\label{gegebenSandwich}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon, M_\varepsilon \in \mathbb{N} \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_n-g| < \varepsilon \land |c_m - g| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Es existiert also für alle \(\varepsilon > 0\) ein \(N_\varepsilon\) und ein \(M_\varepsilon\), so dass für \(K_\varepsilon = \max \left\lbrace N_\varepsilon, M_\varepsilon \right\rbrace\) gilt
+			\begin{aleq*}
+				\forall k > K_\varepsilon \colon |a_k-g| < \varepsilon \land |c_k - g| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Das und \(\forall n \in \mathbb{N} \colon a_n \leq b_n \leq c_n\) implizieren
+			\begin{aleq*}
+				&\forall k > K_\varepsilon \colon -\varepsilon < a_k-g \leq b_k-g \leq c_k-g < \varepsilon \\
+				\implies &\forall k > K_\varepsilon \colon -\varepsilon < b_k-g < \varepsilon \\
+				\iff &\forall k > K_\varepsilon \colon |b_k - g| < \varepsilon
+			\end{aleq*}
+			\par
+			\((b_n)\) ist also ebenfalls konvergent gegen \(g\).
+		\end{proof}
+	\end{thm}
+	
+	\subsection{Teilfolgekriterium}
+	\begin{thm}[Teilfolgekriterium]
+		Eine Folge \((a_n)_{n=1}^\infty\) konvergiert genau dann gegen \(g\), wenn jede Teilfolge von \((a_n)\) ebenfalls gegen \(g\) konvergiert.
+		\begin{proof}
+			\((\impliedby)\) Wenn jede Teilfolge von \((a_n)\) gegen \(g\) konvergiert, konvergiert auch \((a_n)\) gegen \(g\), weil \((a_n)\) eine Teilfolge von \((a_n)\) ist. \\
+			\par
+			\((\implies)\) Indirekter Beweis. \\
+				\textbf{Annahme: } Es gibt eine Teilfolge, die nicht gegen \(g\) konvergiert. Dann existiert  eine streng monoton steigende Folge von natürlichen Zahlen \((n_k)_{k=1}^\infty\), so dass die Folge \(b_k = a_{n_k}\) eine Teilfolge von \((a_n)\) ist, für die gilt
+			\begin{aleq}
+				\label{nichtKonvergenz}
+				&\lnot \forall \varepsilon > 0 \colon \exists K_\varepsilon \in \mathbb{N} \colon \forall k > K_\varepsilon \colon |b_k -g| < \varepsilon \\
+				\iff &\lnot \forall \varepsilon > 0 \colon \exists K_\varepsilon \in \mathbb{N} \colon \forall k > K_\varepsilon \colon |a_{n_k} -g| < \varepsilon
+			\end{aleq}
+			\par
+			Weil \((a_n)\) gegen \(g\) konvergiert, gilt
+			\begin{aleq*}
+				&\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m > N_\varepsilon \colon |a_m - g| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Weil \(n_m \geq m > N_\varepsilon\), gilt
+			\begin{aleq*}
+				&\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m > N_\varepsilon \colon |a_{n_m} - g| < \varepsilon \text{,}
+			\end{aleq*}
+			\par
+			was im Widerspruch zu (\ref{nichtKonvergenz}) steht.
+ 		\end{proof}
 	\end{thm}
 	
 \end{document}
