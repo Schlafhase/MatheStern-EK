@@ -183,7 +183,79 @@
 				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon sup - \varepsilon < a_n
 			\end{aleq*}
 			\par
-			Laut Definition des Supremums gilt \(\forall \varepsilon > 0 \colon \exists  \colon N_\varepsilon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_n \geq a_{N_\varepsilon}\). Daraus folgt, dass (1) wahr ist und \((a_n)\) gegen \(sup\) konvergiert
+			Laut Definition des Supremums gilt \(\forall \varepsilon > 0 \colon \exists  \colon N_\varepsilon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_n \geq a_{N_\varepsilon}\). Daraus folgt, dass (1) wahr ist und \((a_n)\) gegen \(sup\) konvergiert.
+		\end{proof}
+	\end{thm}
+	\subsection{Cauchy-Folgen}
+	\begin{defn}
+		Eine Folge \((a_n)_{n=1}^\infty\) heißt Cauchy-Folge (altmodisch auch Fundamentalfolge), wenn gilt:
+		\begin{aleq*}
+			\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{B} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
+		\end{aleq*}
+	\end{defn}
+	\begin{thm}
+		In den reellen Zahlen (in jeder topologisch abgeschlossenen Menge mit Abstandsbegriff) sind Konvergenz und Cauchy-Eigenschaft äquivalent.
+		
+		\begin{proof}
+			(\(\implies\)) Sei \((a_n)_{n=1}^\infty\) konvergent gegen \(a\). Zu zeigen ist, dass \((a_n)\) eine Cauchy-Folge ist:
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{B} \colon \forall m,n \in \mathbb{N} \colon m,n \geq N_\varepsilon \implies |a_m -a_n| < \varepsilon
+			\end{aleq*}
+			\par
+			Wir wissen, dass \((a_n)\) gegen \(a\) konvergiert. Es gilt also
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon |a_n - a| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Weil die Aussage für alle \(\varepsilon\) (also auch für \(\frac{\varepsilon}{2}\)) gilt, finden wir auch ein \(N_\varepsilon\) und ein \(M_\varepsilon\), so dass gilt
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_n - a| + | a_m - a| < \varepsilon \text{.}
+			\end{aleq*}
+			\begin{lem}
+				\begin{aleq*}
+					\forall x,y \in \mathbb{R} \colon |x+y| \leq |x| + |y|
+				\end{aleq*}
+				\begin{proof}
+					Seien \(x,y \in \mathbb{R}\) und beliebig, aber fest.
+					Da ein beliebiges \(a \in \mathbb{R}\) entweder positiv (\(a = |a|\)) oder negativ (\(a = -|a|\)) ist (und \(-a\) auch) gilt:
+					\begin{aleq}
+						a \leq |a| \land -a \leq |a|
+					\end{aleq}
+					\par
+					Für \(x+y\) müssen zwei Fälle überprüft werden:
+					\begin{enumerate}[label=\theenumi . Fall: ]
+						\item \(x+y \geq 0\) \\
+						\begin{aleq*}
+							|x+y| = x+y \\
+							(1) \implies x+y \leq |x| + |y|
+						\end{aleq*}
+						
+						\item \(x_y < 0\) \\
+						\begin{aleq*}
+							|x+y| = -x-y \\
+							(1) \implies -x-y \leq |x| + |y|
+						\end{aleq*}
+					\end{enumerate}
+				\end{proof}
+			\end{lem}
+			
+			\par
+			Laut Lemma 1.6 gilt also auch
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a + a - a_n| \leq |a_n - a| + | a_m - a| < \varepsilon
+			\end{aleq*}
+			\par
+			Das impliziert
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Das ist äquivalent zur Definition der Cauchy-Folge, weil man ein \(K_\varepsilon\) bestimmen kann, welches größer oder gleich dem \(N_\varepsilon\) und \(M_\varepsilon\) ist. Dann gilt
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \forall n, m > K_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
+			\end{aleq*}
+			\par
+			Damit ist \((a_n)\) eine Cauchy-Folge.
 		\end{proof}
 	\end{thm}
 	
