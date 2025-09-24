@@ -53,16 +53,69 @@
 	\part{Q1}
 	\section{Reelle Zahlenfolgen}
 	\subsection{Definitionen}
-	\begin{defn}
-	$\func{a}{\mathbb{N}}{\mathbb{R}}{n}{a(n)=a_n}$ heißt reelle Zahlenfolge.
+	\begin{defn}[Reelle Zahlenfolge]
+		\quad\newline
+	\(\func{a}{\mathbb{N}}{\mathbb{R}}{n}{a(n)=a_n}\) heißt reelle Zahlenfolge.
 	\end{defn}
-	\begin{defn}
-	Als Bildungsvorschrift bezeichnet man 
-	\begin{enumerate}[label=(\alph*)]
-		\item \(a(n) = f(n)\) \ z.B. \(a(n) = n^2\) \ (explizit)
-		\item \(a(n) = f(a_1, \dots, a_{n-1}, n)\) \ z.B. \(a(n+1) = a(n) + a(n-1)\) \ (rekursiv)
+	\begin{defn}[Bildungsvorschrift]
+		Als Bildungsvorschrift bezeichnet man 
+		\begin{enumerate}[label=(\alph*)]
+			\item \(a(n) = f(n)\) \ z.B. \(a(n) = n^2\) \ (explizit)
+			\item \(a(n) = f(a_1, \dots, a_{n-1}, n)\) \ z.B. \(a(n+1) = a(n) + a(n-1)\) \ (rekursiv)
+		\end{enumerate}
+	\end{defn}
+	
+	\begin{defn}[Monotonie]
+		\label{defMonotonie}
+	Eine beliebige Folge \((a_n)\) ist...
+	\begin{enumerate}
+		\item ...monton steigend genau dann, wenn
+		\begin{aleq*}
+			\forall n_1,n_2 \in \mathbb{N} \colon n_1 > n_2 \implies a_{n_1} \geq a_{n_2} \text{.}
+		\end{aleq*}
+		
+		\item ...monoton fallend genau dann, wenn
+		\begin{aleq*}
+			\forall n_1,n_2 \in \mathbb{N} \colon n_1 > n_2 \implies a_{n_1} \leq a_{n_2} \text{.}
+		\end{aleq*}
+		
+		\item ...streng monoton steigend genau dann, wenn
+		\begin{aleq*}
+			\forall n_1,n_2 \in \mathbb{N} \colon n_1 > n_2 \implies a_{n_1} > a_{n_2} \text{.}
+		\end{aleq*}
+		
+		\item ...streng monoton fallend genau dann, wenn
+		\begin{aleq*}
+			\forall n_1,n_2 \in \mathbb{N} \colon n_1 > n_2 \implies a_{n_1} < a_{n_2} \text{.}
+		\end{aleq*}
 	\end{enumerate}
-\end{defn}
+	\end{defn}
+	
+	\begin{defn}[Beschränktheit]
+		\label{defBeschraenktheit}
+		Eine beliebige Folge \((a_n)\) ist...
+		\begin{enumerate}
+			\item ...nach unten beschränkt genau dann, wenn
+			\begin{aleq*}
+				\exists a \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon a_n \geq a \text{.}
+			\end{aleq*}
+			\item ...nach oben beschränkt genau dann, wenn
+			\begin{aleq*}
+				\exists b \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon a_n \leq b \text{.}
+			\end{aleq*}
+			\item ...beschränkt genau dann, wenn sie nach oben und nach unten beschränkt ist.
+		\end{enumerate}
+	\end{defn}
+	
+	\begin{defn}[Supremum]
+		\label{defSupremum}
+		Das Supremum einer beliebigen nach oben beschränkten Folge \((a_n)\) ist die kleinste obere Schranke dieser Folge.
+	\end{defn}
+	
+	\begin{defn}[Infimum]
+		\label{defInfimum}
+		Analog zum Supremum ist das Infimum einer beliebigen nach unten beschränkten Folge \((a_n)\) die größte untere Schranke dieser Folge.
+	\end{defn}
 	
 	\subsection{Beweis (rekursive Summenfolge = explizite)}
 	\begin{thm}
@@ -78,13 +131,15 @@
 	\begin{proof} Der Beweis wird durch vollständige Induktion geführt. \\
 	\textbf{Induktionsanfang:} Für \(n=0\)
 	\begin{aleq}
+		\label{a_1InductBase}
 			a_1(0) &= 0 
 	\end{aleq}
 	\begin{aleq}
+		\label{a_2InductBase}
 			a_2(0) &= \sum_{k=0}^{0} k = 0
 	\end{aleq}
 	\begin{aleq*}
-		(1) \land (2) \implies a_1(0) = a_2(0)
+		(\ref{a_1InductBase}) \land (\ref{a_2InductBase}) \implies a_1(0) = a_2(0)
 	\end{aleq*}
 	
 	
@@ -156,17 +211,7 @@
 		\begin{proof}
 			O.B.d.A (Ohne Beschränkung der Allgemeinheit) sei \((a_n)_{n=1}^{\infty}\) monoton wachsend. Sei \(sup\) das Supremum von \((a_n)\).
 			
-			\textbf{\((a_n)\) ist monoton wachsend genau dann, wenn:}
-			\begin{aleq*}
-				\forall n_1,n_2 \in \mathbb{N} \colon n_1 > n_2 \implies a_{n_1} \geq a_{n_2}
-			\end{aleq*}
-			\par
-			\textbf{\((a_n)\) hat eine obere Schranke \(\sigma\) genau dann, wenn:}
-			\begin{aleq*}
-				\exists \sigma \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon a_n \leq \sigma
-			\end{aleq*}
-			\par
-			Wenn \(sup\) das Supremum von \((a_n)\) ist, dann gilt
+			Weil \(sup\) das Supremum von \((a_n)\) ist, gilt
 			\begin{aleq*}
 				\forall n \in \mathbb{N} \colon a_n \leq sup \land \forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon sup - \varepsilon < a_{N_\varepsilon} \text{.}
 			\end{aleq*}
@@ -189,7 +234,7 @@
 				\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n > N_\varepsilon \colon sup - \varepsilon < a_n \text{.}
 			\end{aleq*}
 			\par
-			Laut Definition des Supremums gilt \(\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_{N_\varepsilon} \leq a_n\). Daraus folgt, dass (\ref{konvergenz}) wahr ist und \((a_n)\) gegen \(sup\) konvergiert.
+			Laut Definition des Supremums (\ref{defSupremum}) gilt \(\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon  sup - \varepsilon < a_{N_\varepsilon}\). Weil \((a_n)\) monoton wachsend ist, gilt auch \(\forall n > N_\varepsilon \colon a_{N_\varepsilon} \leq a_n\). Daraus folgt, dass (\ref{konvergenz}) wahr ist und \((a_n)\) gegen \(sup\) konvergiert.
 		\end{proof}
 	\end{thm}
 	\subsection{Cauchy-Folgen}
@@ -259,18 +304,28 @@
 				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
-			Das ist äquivalent zur Definition der Cauchy-Folge, weil man ein \(K_\varepsilon\) bestimmen kann, welches größer oder gleich \(N_\varepsilon\) und \(M_\varepsilon\) ist. Man wähle also \(K_\varepsilon := \max \left\lbrace N_\varepsilon, M_\varepsilon\right\rbrace\). Dann gilt
+			Das ist äquivalent zur Definition der Cauchy-Folge, weil man ein \(K_\varepsilon\) bestimmen kann, welches größer oder gleich \(N_\varepsilon\) und \(M_\varepsilon\) ist. Man wähle also \(K_\varepsilon := max \left\lbrace N_\varepsilon, M_\varepsilon\right\rbrace\). Dann gilt
 			\begin{aleq*}
 				\forall \varepsilon > 0 \colon \forall n, m > K_\varepsilon \colon |a_m - a_n| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
 			Damit ist \((a_n)\) eine Cauchy-Folge.
+			\par
+			(\(\impliedby\)) Sei \((b_n)\) eine Cauchy-Folge. Dann gilt
+			\begin{aleq*}
+				&\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m,n \geq N_\varepsilon \colon |b_m-b_n| < \varepsilon \text{.}
+			\end{aleq*}
+			
+			Weil diese Aussage für \underline{alle} \(m,n \geq N_\varepsilon\) gilt, gilt sie auch für\\ \(n=N_\varepsilon,m\geq N_\varepsilon\). Das bedeutet, dass alle \(b_m\) nicht weiter von \(b_{N_\varepsilon}\) entfernt sind als \(\varepsilon\). Oder auch
+			\begin{aleq*}
+				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m \geq N_\varepsilon \colon |b_m - b_{N_\varepsilon}| < \varepsilon \text{.}
+			\end{aleq*}
+			
+			Diese Aussage sei nicht zu verwechseln mit der Definition der Konvergenz. Der entscheidende Unterschied ist, dass \(a_{N_\varepsilon}\) kein fester Wert ist. Was allerdings aus dieser Aussage folgt ist, dass \((b_m)\) für \(m \geq N_\varepsilon\) beschränkt ist. Die Folge ist auch für alle \(m < N_\varepsilon\) beschränkt, weil es nur endlich viele Folgeglieder mit diesem Kriterium gibt. Es lässt sich also eine obere Schranke als \(max \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) und eine untere Schranke als \(min \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) berechnen.
+			\dots
 		\end{proof}
 	\end{thm}
 	
-	\vdots
-	
-	\section{Grenzwerte}
 	\vdots
 	\subsection{Einschachtelungssatz/Sandwichlemma}
 	\begin{thm}[Einschachtelungssatz/Sandwichlemma]
@@ -288,7 +343,7 @@
 				\forall \varepsilon > 0 \colon \exists N_\varepsilon, M_\varepsilon \in \mathbb{N} \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_n-g| < \varepsilon \land |c_m - g| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
-			Es existiert also für alle \(\varepsilon > 0\) ein \(N_\varepsilon\) und ein \(M_\varepsilon\), so dass für \(K_\varepsilon = \max \left\lbrace N_\varepsilon, M_\varepsilon \right\rbrace\) gilt
+			Es existiert also für alle \(\varepsilon > 0\) ein \(N_\varepsilon\) und ein \(M_\varepsilon\), so dass für \(K_\varepsilon = max \left\lbrace N_\varepsilon, M_\varepsilon \right\rbrace\) gilt
 			\begin{aleq*}
 				\forall k > K_\varepsilon \colon |a_k-g| < \varepsilon \land |c_k - g| < \varepsilon \text{.}
 			\end{aleq*}
@@ -323,7 +378,7 @@
 				&\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m > N_\varepsilon \colon |a_m - g| < \varepsilon \text{.}
 			\end{aleq*}
 			\par
-			Weil \(n_m \geq m > N_\varepsilon\), gilt
+			Weil \(n_m \geq m > N_\varepsilon\) (strenge Monotonie von \((n_k)\)), gilt
 			\begin{aleq*}
 				&\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m > N_\varepsilon \colon |a_{n_m} - g| < \varepsilon \text{,}
 			\end{aleq*}
