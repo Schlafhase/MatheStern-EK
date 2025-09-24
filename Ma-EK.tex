@@ -183,6 +183,7 @@
 	
 	\subsection{Satz (Jede konvergente Folge ist beschränkt)}
 	\begin{thm}
+		\label{konvergentBeschraenkt}
 		Sei \((a_n)_{n=1}^{\infty}\) eine konvergente Folge mit dem Grenzwert \(a\). Dann gilt
 		\[
 		\exists m,M \in \mathbb{R} \colon \forall n \in \mathbb{N} \colon m < a_n < M \text{.}
@@ -198,8 +199,7 @@
 		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon -\varepsilon < a_n - a < \varepsilon \text{.}
 		\]
 		\par
-		Für ein bestimmtes \(\varepsilon > 0\) existiert also ein \(N_{\varepsilon}\), so dass 
-		für alle \(n \geq N_{\varepsilon}\) \(a_n\) beschränkt ist. Da es nur endlich viele Folgenglieder für \(n < N_{\varepsilon}\) gibt, lässt sich eine obere Grenze als \(max (\left\lbrace a_n | n < N_{\varepsilon} \right\rbrace  \cup \lbrace \varepsilon + a \rbrace)\) und eine untere Grenze als \(min (\left\lbrace a_n | n < N_{\varepsilon} \rbrace \cup \lbrace -\varepsilon + a \rbrace\right\rbrace)\) berechnen.
+		Für jedes \(\varepsilon > 0\) existiert also ein \(N_{\varepsilon}\), so dass \(a_n\) für alle \(n \geq N_{\varepsilon}\) beschränkt ist. Da es nur endlich viele Folgenglieder für \(n < N_{\varepsilon}\) gibt, lässt sich eine obere Grenze als \(max (\left\lbrace a_n | n < N_{\varepsilon} \right\rbrace  \cup \lbrace \varepsilon + a \rbrace)\) und eine untere Grenze als \(min (\left\lbrace a_n | n < N_{\varepsilon} \rbrace \cup \lbrace -\varepsilon + a \rbrace\right\rbrace)\) berechnen.
 		\end{proof}
 	\end{thm}
 	
@@ -424,7 +424,7 @@
 			\item \(\lim\limits_{n \to \infty} a_n + b_n = a + b\)
 			\item \(\lim\limits_{n \to \infty} a_n - b_n = a - b\)
 			\item \(\lim\limits_{n \to \infty} a_n * b_n = a * b\)
-			\item \(\lim\limits_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}, b \neq 0 \land \forall n \in \mathbb{N} \colon b_n \neq 0\)
+			\item \(\lim\limits_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}, b \neq 0 \land \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon b_n \neq 0\)
 		\end{enumerate}
 		
 		\begin{proof}
@@ -438,6 +438,15 @@
 				\end{aleq*}
 				
 				Das bedeutet, dass der Grenzwert von \(a_n + b_n = a+b\) ist. Damit ist 1. bewiesen.
+				
+				\item 
+				Weil \((a_n)\) und \((b_n)\) gegen \(a\) bzw. \(b\) konvergieren, gilt analog zu 1.:
+				\begin{aleq*}
+					&\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n - a| + |b_n - b| < \varepsilon \\
+					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - a) - (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon && \text{Lemma \ref{betragSumme}} \\
+					\iff &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - b_n) - (a - b)| < \varepsilon
+				\end{aleq*}
+				Damit ist der Grenzwert von \(a_n - b_n = a - b\). 2. ist bewiesen.
 				
 				\item 
 				\dots
