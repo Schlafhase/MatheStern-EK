@@ -213,7 +213,6 @@
 				\item In \([m, \frac{m+M}{2}[\) liegen unendlich viele Folgeglieder. \\Dann beginne mit \([m, \frac{m+M}{2}[\) von vorne.
 				\item In \(]\frac{m+M}{2}, M]\) liegen undenlich viele Folgeglieder. \\Dann beginne mit \(]\frac{m+M}{2}, M]\) von vorne.
 			\end{enumerate}
-			\newpage
 			\par
 			Das Verfahren...
 			\begin{enumerate}[label=(\alph*)]
@@ -269,8 +268,8 @@
 		\end{aleq*}
 	\end{defn}
 	
-	\begin{lem}
-		\label{betragSumme}
+	\begin{lem}[Dreiecksungleichung]
+		\label{dreiecksungleichung}
 		\begin{aleq*}
 			\forall x,y \in \mathbb{R} \colon |x+y| \leq |x| + |y|
 		\end{aleq*}
@@ -318,7 +317,7 @@
 			\end{aleq*}
 			
 			\par
-			Laut Lemma \ref{betragSumme} gilt also auch
+			Laut Lemma \ref{dreiecksungleichung} gilt also auch
 			\begin{aleq*}
 				\forall \varepsilon > 0 \colon \forall n > N_\varepsilon, m > M_\varepsilon \colon |a_m - a + a - a_n| \leq |a_n - a| + | a_m - a| < \varepsilon \text{.}
 			\end{aleq*}
@@ -433,7 +432,7 @@
 				\item Weil \((a_n)\) und \((b_n)\) gegen \(a\) bzw. \(b\) konvergieren (\(|a_n -a|\) und \(|b_n - b|\) werden beliebig klein), gilt
 				\begin{aleq*}
 					&\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n - a | + |b_n - b| < \varepsilon \\
-					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n - a + b_n - b| < \varepsilon && \text{Lemma \ref{betragSumme}} \\
+					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n - a + b_n - b| < \varepsilon && \text{Lemma \ref{dreiecksungleichung}} \\
 					\iff &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n + b_n - (a + b)| < \varepsilon
 				\end{aleq*}
 				
@@ -443,7 +442,7 @@
 				Weil \((a_n)\) und \((b_n)\) gegen \(a\) bzw. \(b\) konvergieren, gilt analog zu 1.:
 				\begin{aleq*}
 					&\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |a_n - a| + |b_n - b| < \varepsilon \\
-					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - a) - (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon && \text{Lemma \ref{betragSumme}} \\
+					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - a) - (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon && \text{Lemma \ref{dreiecksungleichung}} \\
 					\iff &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - b_n) - (a - b)| < \varepsilon
 				\end{aleq*}
 				Damit ist der Grenzwert von \(a_n - b_n = a - b\). 2. ist bewiesen.
