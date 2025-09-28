@@ -458,7 +458,7 @@
 		\begin{enumerate}
 			\item \(\lim\limits_{n \to \infty} a_n + b_n = a + b\)
 			\item \(\lim\limits_{n \to \infty} a_n - b_n = a - b\)
-			\item \(\lim\limits_{n \to \infty} a_n * b_n = a * b\)
+			\item \(\lim\limits_{n \to \infty} a_n \cdot b_n = a \cdot b\)
 			\item \(\lim\limits_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}, b \neq 0 \land \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon b_n \neq 0\)
 		\end{enumerate}
 		
@@ -481,10 +481,38 @@
 					\implies &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - a) - (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon && \text{Lemma \ref{dreiecksungleichung}} \\
 					\iff &\forall \varepsilon > 0 \colon \exists N_\varepsilon \colon \forall n \geq N_\varepsilon \colon |(a_n - b_n) - (a - b)| < \varepsilon
 				\end{aleq*}
-				Damit ist der Grenzwert von \(a_n - b_n = a - b\). 2. ist bewiesen.
+				Damit ist der Grenzwert von \(a_n - b_n = a - b\).
 				
-				\item \TODO
+				\item
+				Weil die Folge \((a_n)\) konvergent ist, ist sie laut \hyperref[konvergentBeschraenkt]{Satz \ref{konvergentBeschraenkt}} auch beschränkt. Es existiert also eine obere Schranke \(s \in \mathbb{R^+}\), für die also gilt \(\forall n \in \mathbb{N} \colon |a_n| \leq s\).
 				
+				Wir müssen zeigen, dass für alle \(\varepsilon > 0\) ein \(N_\varepsilon\) existiert, so dass 
+				\[\forall n \geq N_\varepsilon \colon |a_n b_n - ab| < \varepsilon \text{.}\]
+				
+				Weil \(a_n\) gegen \(a\) konvergiert, existiert ein \(N_1\), so dass
+				\begin{aleq}
+					\label{n1Ungleichung}
+					\forall n \geq N_1 \colon |a_n - a| < \frac{\varepsilon}{2(|b| + 1)}
+				\end{aleq}
+				
+				und analog dazu ein \(N_2\), so dass
+				\begin{aleq}
+					\label{n2Ungleichung}
+					\forall n \geq N_2 \colon |b_n - b| < \frac{\varepsilon}{2s} \text{.}
+				\end{aleq}
+				
+				Wenn wir \(N_\varepsilon\) jetzt als \(max\lbrace N_1, N_2 \rbrace\) definieren, können wir die zu zeigende Ungleichung weiter Umformen.
+				\begin{aleq*}
+					&\forall n \geq N_\varepsilon \colon |a_n b_n - ab| < \varepsilon \\
+					\iff &\forall n \geq N_\varepsilon \colon |a_n b_n -a_n b + a_n b - ab| < \varepsilon \\
+					\impliedby &\forall n \geq N_\varepsilon \colon |a_n (b_n -b)| + |b (a_n - a)| < \varepsilon && \hyperref[dreiecksungleichung]{\text{Dreiecksungleichung}} \\
+					\impliedby &\forall n \geq N_\varepsilon \colon |a_n| \cdot |b_n -b| + |b| \cdot |a_n - a| < \varepsilon \\
+					\impliedby &s \cdot \frac{\varepsilon}{2s} + |b| \cdot \frac{\varepsilon}{2(|b| + 1)} < \varepsilon &&\text{Ungleichungen \ref{n1Ungleichung}, \ref{n2Ungleichung}} \\
+					\impliedby &\frac{\varepsilon}{2} + \frac{\varepsilon}{2} \leq \varepsilon &&\text{Weil \(\frac{|b|}{|b| + 1} < 1\)} \\
+					\iff &\varepsilon \leq \varepsilon
+				\end{aleq*}
+				
+				Weil \(\varepsilon \leq \varepsilon\) offensichtlich gilt, ist \(\lim\limits_{n \to \infty} a_n b_n = ab\)
 				\item \TODO
 			\end{enumerate}
 		\end{proof}
@@ -539,10 +567,10 @@
 		\begin{enumerate}
 			\item \(\lim\limits_{n \to \infty} a_n + b_n = \infty\)
 			\item \(\lim\limits_{n \to \infty} -a_n - b_n = -\infty\)
-			\item \(\lim\limits_{n \to \infty} a_n * b_n = \infty\)
-			\item \(\lim\limits_{n \to \infty} a_n * (- b_n) = -\infty\)
+			\item \(\lim\limits_{n \to \infty} a_n \cdot b_n = \infty\)
+			\item \(\lim\limits_{n \to \infty} a_n \cdot (- b_n) = -\infty\)
 			\item \(\lim\limits_{n \to \infty} a_n + c_n = \infty\)
-			\item \(\lim\limits_{n \to \infty} a_n * c_n = 
+			\item \(\lim\limits_{n \to \infty} a_n \cdot c_n = 
 			\begin{cases}
 				\begin{aligned}
 					\infty, &&c > 0 \\
