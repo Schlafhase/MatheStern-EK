@@ -1,3 +1,5 @@
+\RequirePackage{currfile}
+
 \documentclass{article}
 \usepackage{amsmath, amsfonts, amssymb, amsthm, array, enumitem, needspace}
 \usepackage[parfill]{parskip}
@@ -49,7 +51,7 @@
 		\color{DarkRed}
 		\fbox{\begin{minipage}{\textwidth}
 				\textbf{Hinweis} \\
-				An dieser Stelle fehlt (im Moment) etwas. Falls Sie dazu beitragen möchten dieses Dokument zu vervollständigen, können Sie dies auf \href{https://github.com/Schlafhase/MatheStern-EK/}{GitHub} tun.
+				An dieser Stelle fehlt (im Moment) etwas. Falls Sie dazu beitragen möchten dieses Dokument zu vervollständigen, können Sie das auf \href{https://github.com/Schlafhase/MatheStern-EK/}{GitHub} tun. Diese Stelle befindet sich auf Zeile \texttt{\the\inputlineno} der Datei \texttt{\currfilename}
 		\end{minipage}}
 	}
 
@@ -385,7 +387,7 @@
 	\TODO
 	\subsection{Einschachtelungssatz/Sandwichlemma}
 	\begin{thm}[Einschachtelungssatz/Sandwichlemma]
-		Seien \((a_n)_{n=1}^\infty\), \((b_n)_{n=1}^\infty\) und \((c_n)_{n=1}^\infty\) beliebige Folgen mit \(\forall n \in \mathbb{N} \colon a_n \leq b_n \leq c_n\) und \(\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} b_n = g\). Dann konvergiert auch \((b_n)\) gegen \(g\).
+		Seien \((a_n)_{n=1}^\infty\), \((b_n)_{n=1}^\infty\) und \((c_n)_{n=1}^\infty\) beliebige Folgen mit \(\forall n \in \mathbb{N} \colon a_n \leq b_n \leq c_n\) und \(\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} c_n = g\). Dann konvergiert auch \((b_n)\) gegen \(g\).
 		
 		\begin{proof}
 			Zu zeigen ist
@@ -579,9 +581,6 @@
 	\end{defn}
 	
 	\newpage
-	\part{Q2}
-	\part{Q3}
-	\part{Q4}
 	
 	\part{Anhang}
 	\section{\rlap{GNU Free Documentation License}}
