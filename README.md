@@ -4,3 +4,8 @@ unvollständig oder sogar falsch sind und es schwierig ist die behandelten Theme
 
 ## Lizenz
 Dieses Dokument ist unter der GNU Free Documentation License lizensiert. Mehr dazu steht im Dokument selbst.
+
+> [!NOTE]
+> Das Mathe*-Dokument gehört nicht wirklich dazu. Da der Mathe*-Kurs 
+> leichter zu verstehen ist, wird das dazugehörige Dokument eigentlich nur von mir (Linus Y. Schneeberg) verwendet, um Hausaufgaben schön aufzuschreiben.
+> Ich habe mich trotzdem dazu entschieden, es öffentlich zu machen, weil ich keinen Nachteil darin sehe.
