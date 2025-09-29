@@ -381,7 +381,7 @@
 				\forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m \geq N_\varepsilon \colon |b_m - b_{N_\varepsilon}| < \varepsilon \text{.}
 			\end{aleq*}
 			
-			Diese Aussage sei nicht zu verwechseln mit der Definition der Konvergenz. Der entscheidende Unterschied ist, dass \(a_{N_\varepsilon}\) kein fester Wert ist. Was allerdings aus dieser Aussage folgt ist, dass \((b_m)\) für \(m \geq N_\varepsilon\) beschränkt ist. Die Folge ist auch für alle \(m < N_\varepsilon\) beschränkt, weil es nur endlich viele Folgeglieder mit diesem Kriterium gibt. Es lässt sich also eine obere Schranke als \(max \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) und eine untere Schranke als \(min \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) berechnen.
+			Diese Aussage sei nicht zu verwechseln mit der Definition der Konvergenz. Der entscheidende Unterschied ist, dass \(b_{N_\varepsilon}\) kein fester Wert ist. Was allerdings aus dieser Aussage folgt ist, dass \((b_m)\) für \(m \geq N_\varepsilon\) beschränkt ist. Die Folge ist auch für alle \(m < N_\varepsilon\) beschränkt, weil es nur endlich viele Folgeglieder mit diesem Kriterium gibt. Es lässt sich also eine obere Schranke als \(max \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) und eine untere Schranke als \(min \left\lbrace b_n | n < N_\varepsilon \right\rbrace\) berechnen.
 			\TODO
 		\end{proof}
 	\end{thm}
@@ -484,7 +484,7 @@
 				Damit ist der Grenzwert von \(a_n - b_n = a - b\).
 				
 				\item
-				Weil die Folge \((a_n)\) konvergent ist, ist sie laut \hyperref[konvergentBeschraenkt]{Satz \ref{konvergentBeschraenkt}} auch beschränkt. Es existiert also eine obere Schranke \(s \in \mathbb{R^+}\), für die also gilt \(\forall n \in \mathbb{N} \colon |a_n| \leq s\).
+				Weil die Folge \((a_n)\) konvergent ist, ist sie laut \hyperref[konvergentBeschraenkt]{Satz \ref{konvergentBeschraenkt}} auch beschränkt. Es existiert also ein \(s \in \mathbb{R^+}\), für die also gilt \(\forall n \in \mathbb{N} \colon |a_n| \leq s\).
 				
 				Wir müssen zeigen, dass für alle \(\varepsilon > 0\) ein \(N_\varepsilon\) existiert, so dass 
 				\[\forall n \geq N_\varepsilon \colon |a_n b_n - ab| < \varepsilon \text{.}\]
@@ -513,7 +513,15 @@
 				\end{aleq*}
 				
 				Weil \(\varepsilon \leq \varepsilon\) offensichtlich gilt, ist \(\lim\limits_{n \to \infty} a_n b_n = ab\)
-				\item \TODO
+				\item Um 4. zu beweisen, muss nur bewiesen werden, dass \(\lim\limits_{n \to \infty} \frac{1}{b_n} = \frac{1}{b}\), da \(\frac{a}{b} = (\frac{1}{b}) \cdot a\) und der Rest aus 3. folgt.
+				\begin{aleq*}
+					\lim_{x \to b} \frac{1}{x} = \frac{1}{b}\text{,}
+				\end{aleq*}
+				
+				weil \(\frac{1}{x}\) stetig in \(b\) ist (\(b \neq 0\) ist gegeben). Aus der \hyperref[defStetigkeitFolgen]{Definition für Stetigkeit über Folgen} folgt, dass für alle Folgen \((x_n)\), die gegen \(b\) konvergieren --- also auch für \((b_n)\) --- gilt:
+				\begin{aleq*}
+					\lim_{n \to \infty} \frac{1}{x_n} = \frac{1}{b}
+				\end{aleq*}
 			\end{enumerate}
 		\end{proof}
 	\end{thm}
@@ -593,6 +601,7 @@
 	\section{Grenzwerte und Funktionen}
 	\subsection{Stetigkeit}
 	\begin{defn}[Stetigkeit über Folgen]
+		\label{defStetigkeitFolgen}
 		Eine Funktion \(f \colon A \to \mathbb{R}\) heißt stetig in \(x_0 \in A\) genau dann, wenn für alle Folgen \((x_n)_{n=1}^\infty\) mit 
 		\begin{aleq*}
 			&\forall n \colon x_n \in A \\
@@ -603,6 +612,7 @@
 	\end{defn}
 	
 	\begin{defn}[\(\varepsilon-\delta\)-Definition für Stetigkeit]
+		\label{defStetigkeitDeltaEpsilon}
 		Eine Funktion \(f \colon A \to \mathbb{R}\) heißt stetig in \(x_0 \in A\) genau dann, wenn
 		\begin{aleq*}
 			\forall \varepsilon > 0 \colon \exists \delta > 0 \colon \forall x \in A \setminus \left\lbrace x_0 \right\rbrace \colon |x_0 - x| < \delta \implies |f(x_0) - f(x)| < \varepsilon \text{.}
