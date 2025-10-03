@@ -8,7 +8,6 @@
 \usepackage{color}   %May be necessary if you want to color links
 \usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
-\usepackage[framemethod=tikx]{mdframed}
 \hypersetup{
 	colorlinks=true, %set true if you want colored links
 	linktoc=all,     %set to all if you want both sections and subsections linked
@@ -391,7 +390,7 @@
 			\TODO
 		\end{proof}
 	\end{thm}
-	
+
 	\subsection{Einschachtelungssatz/Sandwichlemma}
 	\begin{thm}[Einschachtelungssatz/Sandwichlemma]
 		Seien \((a_n)_{n=1}^\infty\), \((b_n)_{n=1}^\infty\) und \((c_n)_{n=1}^\infty\) beliebige Folgen mit \(\forall n \in \mathbb{N} \colon a_n \leq b_n \leq c_n\) und \(\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} c_n = g\). Dann konvergiert auch \((b_n)\) gegen \(g\).
