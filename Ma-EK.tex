@@ -222,19 +222,21 @@
 		\[
 		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon |a_n - a| < \varepsilon \text{.}
 		\]
-		Da \(|a_n - a| < \varepsilon\) in der oberen Aussage äquivalent zu \(-x < a_n < x\) ist, gilt auch
+		Weil \(|a_n - a| < \varepsilon\) in der oberen Aussage äquivalent zu \(-\varepsilon + a < a_n < \varepsilon + a\) ist, gilt auch
 		\[
-		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon -\varepsilon < a_n - a < \varepsilon \text{.}
+		\forall \varepsilon>0 \colon \exists N_{\varepsilon} \in \mathbb{N} \colon \forall n \geq N_{\varepsilon} \colon -\varepsilon + a < a_n < \varepsilon + a \text{.}
 		\]
 		\par
 		Für jedes \(\varepsilon > 0\) existiert also ein \(N_{\varepsilon}\), so dass \(a_n\) für alle \(n \geq N_{\varepsilon}\) beschränkt ist. Da es nur endlich viele Folgenglieder für \(n < N_{\varepsilon}\) gibt, lässt sich eine obere Grenze als 
 		\begin{aleq*}
 			max (\left\lbrace a_n | n < N_{\varepsilon} \right\rbrace  \cup \lbrace \varepsilon + a \rbrace)
 		\end{aleq*}
+
 		 und eine untere Grenze als 
 		 \begin{aleq*}
 		 	min (\left\lbrace a_n | n < N_{\varepsilon} \rbrace \cup \lbrace -\varepsilon + a \rbrace\right\rbrace)
 		 \end{aleq*}
+
 		  berechnen.
 		\end{proof}
 	\end{thm}
@@ -387,7 +389,7 @@
 			\[min \left(\left\lbrace b_n | n < N_\varepsilon \right\rbrace \cup \left\lbrace b_{N_\varepsilon} - \varepsilon \right\rbrace \right)\]
 			
 			berechnen.
-			\TODO
+ 			\TODO
 		\end{proof}
 	\end{thm}
 
