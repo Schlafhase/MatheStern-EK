@@ -623,7 +623,63 @@
 			\forall \varepsilon > 0 \colon \exists \delta > 0 \colon \forall x \in A \setminus \left\lbrace x_0 \right\rbrace \colon |x_0 - x| < \delta \implies |f(x_0) - f(x)| < \varepsilon \text{.}
 		\end{aleq*}
 	\end{defn}
-	
+
+  \section{Metrische Räume}
+
+  \begin{defn}[Metrischer Raum]
+    Seien \(M \neq \emptyset \) und \(d \colon M \times M \to [0; \infty[\) eine Metrik.
+    $M$ und $d$ heißen zusammen metrischer Raum.
+  \end{defn}
+
+  \subsection{Verallgemeinerungen der vorigen Abschnitte}
+  \begin{defn}[Allgemeine Grenzwerte und Konvergenz]
+    Sei $(a_n)_{n=1}^\infty$ eine Folge in $M$.
+    Dann heißt $(a_n)$ konvergent gegen den Grenzwert $a \in M$
+  \end{defn}
+
+  \begin{defn}[Cauchy-Folge]
+    Eine Folge $(a_n)_{n=1}^\infty, \forall n \colon a_n \in M$ heißt Cauchy-Folge, wenn gilt:
+    \begin{align*}
+      \forall \varepsilon > 0 \colon \exists N_\varepsilon \in \mathbb{N} \colon \forall m,n > N_\varepsilon \colon d(a_m, a_n) < \varepsilon.
+    \end{align*}
+  \end{defn}
+
+  \begin{defn}[Banach-Raum]
+    Ein metrischer Raum $(M, d)$, in dem jede Cauchy-Folge konvergiert, heißt Banach-Raum oder vollständiger, metrischer Raum.
+  \end{defn}
+
+  \begin{defn}[Stetigkeit]
+    Seien $(X, d_x)$ und $(Y, d_y)$ metrische Räume. Dann heißt $f \colon X \to Y$ stetig
+    in $x_0 \in X$, wenn gilt: 
+    
+    \begin{align*}
+      \forall \varepsilon > 0 \colon \exists \delta > 0 \colon \forall x \in X \colon d_x(x, x_0) < \delta \implies d_y(f(x), f(x_0)) < \varepsilon.
+    \end{align*}
+  \end{defn}
+
+  \subsection{Der Fixpunktsatz von Banach}
+  \begin{thm}[Fixpunktsatz von Banach]
+    Seien $(X, d)$ ein vollständiger, metrischer Raum und $M \subseteq X$ eine nichtleere, abgeschlossene Menge.
+    Sei außerdem $\varphi \colon M \to M$ eine Lipschitz-stetige Funktion mit $L < 1$ (eine Kontraktion).
+    Dann kann man zu jedem $x_0 \in M$ eine Folge definieren mit dem ersten Folgeglied $x_0$ und $x_{n+1} = \varphi (x_n)$
+    und es gibt ein $\xi \in M$ mit $\varphi (\xi) = \xi$, den Fixpunkt, sodass $\displaystyle\lim_{n \to \infty} x_n = \xi$.
+
+    \begin{proof}
+      \begin{enumerate}
+        \item $(x_n)_{n=1}^\infty$ ist eine Cauchy-Folge. \\
+        Seien $x_n, x_{n+1}$ zwei aufeinanderfolgende Folgeglieder. Dann gilt
+        \begin{align*}
+          d(x_{n+1}, x_n) = d(\varphi (x_n), \varphi (x_{n-1})) \leq L \cdot d(x_n, x_{n-1}) \leq \dots \leq L^n \cdot d(x_1, x_n).
+        \end{align*}
+        Also $d(x_{n+1}, x_n) \stackrel{n \to \infty}{\longrightarrow} 0$.
+        Wegen der Dreiecksungleichung (Lemma \ref{dreiecksungleichung}) gilt:
+        \begin{align*}
+          d(x_n, x_{n+k}) \leq d(x_n, x_{n+1}) + d(x_{n+1}, x_{n+2}) + \dots + d(x_{n+k-1}, x_{n+k})
+        \end{align*}
+      \end{enumerate}
+      \TODO
+    \end{proof}
+  \end{thm}	
 	
 	\newpage
 	
